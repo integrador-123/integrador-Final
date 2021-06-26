@@ -1,0 +1,220 @@
+CREATE DATABASE bdcaja;
+USE bdcaja;
+/*Tabla entrada*/
+CREATE TABLE entrada(
+codigo_entrada varchar(10) not null primary key,
+contenido_entrada varchar(30),
+precio_entrada numeric(10,2)
+);
+/*Tabla fondo*/
+CREATE TABLE fondo(
+codigo_fondo varchar(10) not null primary key,
+contenido_fondo varchar(30),
+precio_fondo numeric(10,2)
+);
+/*Tabla bebida*/
+CREATE TABLE bebida(
+codigo_bebida varchar(10) not null primary key,
+contenido_bebida varchar(30),
+precio_bebida numeric(10,2)
+);
+/*Tabla postre*/
+CREATE TABLE postre(
+codigo_postre varchar(10) not null primary key,
+contenido_postre varchar(30),
+precio_postre numeric(10,2)
+);
+/*Tabla menu*/
+CREATE TABLE menu (
+codigo_menu varchar(10) not null primary key,
+menu_entrada varchar(10),FOREIGN KEY(menu_entrada) REFERENCES entrada(codigo_entrada), 
+menu_fondo varchar(10),FOREIGN KEY(menu_fondo) REFERENCES fondo(codigo_fondo),
+menu_bebida varchar(10),FOREIGN KEY(menu_bebida) REFERENCES bebida(codigo_bebida),
+menu_postre varchar(10),FOREIGN KEY(menu_postre) REFERENCES postre(codigo_postre)
+);
+/*Tabla boleta*/
+CREATE TABLE Boleta(
+codigo_boleta int not null primary key,
+nombre_cliente varchar (20),
+dni_cliente varchar(8),
+mesa_cliente varchar(10),
+fecha_boleta date,
+importe_total numeric (10,2)
+);
+DROP TABLE factura;
+Select*from factura;
+DELETE FROM factura;
+
+/*Datos para probar*/
+INSERT INTO factura(codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values
+(100,"Jose Ariza","75391345","M2","16-06-2019",228.65),
+(101,"Pedro Rojas","75391346","M3","16-06-2019",182.92),
+(102,"Sheyla Galarza","75391347","M4","16-06-2019",137.19),
+(103,"Jose Ariza","75391345","M2","16-06-2019",228.65),
+(104,"Pedro Rojas","75391346","M3","16-06-2019",182.92),
+(105,"Sheyla Galarza","75391347","M4","16-06-2019",137.19),
+(106,"Jose Ariza","75391345","M2","16-06-2019",228.65),
+(107,"Pedro Rojas","75391346","M3","17-06-2019",182.92),
+(108,"Sheyla Galarza","75391347","M4","17-06-2019",137.19),
+(109,"Pedro Rojas","75391346","M3","17-06-2019",182.92),
+(110,"Sheyla Galarza","75391347","M4","17-06-2019",137.19),
+(111,"Jose Ariza","75391345","M2","17-06-2019",228.65),
+(112,"Pedro Rojas","75391346","M3","17-06-2019",182.92),
+(113,"Sheyla Galarza","75391347","M4","18-06-2019",137.19),
+(114,"Sheyla Galarza","75391347","M4","18-06-2019",137.19),
+(115,"Jose Ariza","75391345","M2","18-06-2019",228.65),
+(116,"Pedro Rojas","75391346","M3","19-06-2019",182.92),
+(117,"Sheyla Galarza","75391347","M4","19-06-2019",137.19);
+Select*from factura
+Select*from factura WHERE codigo_boleta=100
+Select*from factura WHERE fecha_boleta="17-06-2019"
+DELETE FROM factura WHERE codigo_boleta=117
+/*Eliminar*/
+DROP TABLE bebida
+DROP TABLE entrada
+DROP TABLE fondo
+DROP TABLE postre
+DROP TABLE menu
+DROP TABLE Boleta
+DROP TABLE Detalle
+DROP DATABASE bdcaja
+/*Insertando datos*/
+/*Boleta*/
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10000,"Jose Ariza","75391345","M1","2019-06-17 00:00:00",73.11);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10001,"Pedro Vidal","75391346","M2","2019-06-18 00:00:00",94.26);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10002,"Andrés Gutierrez","75391347","M3","2019-06-19 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10003,"María Alvarado","75391348","M4","2019-06-17 00:00:00",94.26);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10004,"Sheyla Galarza","75391349","M5","2019-06-18 00:00:00",94.26);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10005,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10006,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10007,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10008,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10009,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10010,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10011,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10012,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10013,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10014,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10015,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10016,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10017,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10018,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10019,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10020,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10021,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10022,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10023,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10024,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10025,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10026,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10027,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10028,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10029,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10030,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10031,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10032,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10033,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10034,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10035,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10036,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10037,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10038,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10039,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10040,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10042,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10043,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10044,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10045,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10046,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10047,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10048,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10049,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+INSERT INTO boleta (codigo_boleta,nom_cliente,dni_cliente,mesa_cliente,fecha_boleta,costo_total) values(10050,"Alejandra Pilco","75391350","M6","2019-06-20 00:00:00",62.85);
+
+/*Detalle*/
+INSERT INTO detalle (num_boleta,num_detalle,menu_detalle,cantidad_menu,precio_ventaxuni,precio_venta,precio_igv,precio_total) values (10001,NULL,"MENU01",3,20.67,62.01,11.16,73.11);
+INSERT INTO detalle (num_boleta,num_detalle,menu_detalle,cantidad_menu,precio_ventaxuni,precio_venta,precio_igv,precio_total) values (10001,NULL,"MENU02",3,26.63,79.89,14.37,94.26);
+INSERT INTO detalle (num_boleta,num_detalle,menu_detalle,cantidad_menu,precio_ventaxuni,precio_venta,precio_igv,precio_total) values (10001,NULL,"MENU03",3,17.76,53.28,9.57,62.85);
+INSERT INTO detalle (num_boleta,num_detalle,menu_detalle,cantidad_menu,precio_ventaxuni,precio_venta,precio_igv,precio_total) values (10002,NULL,"MENU02",3,26.63,79.89,14.37,94.26);
+INSERT INTO detalle (num_boleta,num_detalle,menu_detalle,cantidad_menu,precio_ventaxuni,precio_venta,precio_igv,precio_total) values (10003,NULL,"MENU02",3,26.63,79.89,14.37,94.26);
+INSERT INTO detalle (num_boleta,num_detalle,menu_detalle,cantidad_menu,precio_ventaxuni,precio_venta,precio_igv,precio_total) values (10003,NULL,"MENU03",3,17.76,53.28,9.57,62.85);
+
+/*Entrada*/
+INSERT INTO entrada (codigo_entrada,contenido_entrada,precio_entrada) values ("ENTR01","Causa", 2.0);
+INSERT INTO entrada (codigo_entrada,contenido_entrada,precio_entrada) values ("ENTR02","Sopa wantan",1.8);
+INSERT INTO entrada (codigo_entrada,contenido_entrada,precio_entrada) values ("ENTR03","Choritos a la chalaca", 4.5);
+/*Bebidas*/
+INSERT INTO bebida (codigo_bebida,contenido_bebida,precio_bebida) values ("BEBI01","Limonada",1.5);
+INSERT INTO bebida (codigo_bebida,contenido_bebida,precio_bebida) values ("BEBI02","Chicha morada",1.8);
+INSERT INTO bebida (codigo_bebida,contenido_bebida,precio_bebida) values ("BEBI03","Jugo mixto",2.5);
+/*Fondo*/
+INSERT INTO fondo (codigo_fondo,contenido_fondo,precio_fondo) values ("FOND01","Lomo saltado", 6.5);
+INSERT INTO fondo (codigo_fondo,contenido_fondo,precio_fondo) values ("FOND02","Jalea especial", 11.5);
+INSERT INTO fondo (codigo_fondo,contenido_fondo,precio_fondo) values ("FOND03","Seco de pollo con frijoles",7.0);
+INSERT INTO fondo (codigo_fondo,contenido_fondo,precio_fondo) values ("FOND04","Arroz con pollo especial",11.5);
+INSERT INTO fondo (codigo_fondo,contenido_fondo,precio_fondo) values ("FOND05","Arroz chaufa mixto",11.5);
+INSERT INTO fondo (codigo_fondo,contenido_fondo,precio_fondo) values ("FOND06","Aji de gallina",6.5);
+/*Postre*/
+INSERT INTO postre (codigo_postre,contenido_postre,precio_postre) values ("POST01","Torta de chocolate", 4.5);
+INSERT INTO postre (codigo_postre,contenido_postre,precio_postre) values ("POST02","Arroz con leche", 3.5);
+INSERT INTO postre (codigo_postre,contenido_postre,precio_postre) values ("POST03","Mazamorra morada", 6.0);
+/*Menu*/
+INSERT INTO menu (codigo_menu,menu_entrada,menu_fondo,menu_bebida,menu_postre) values("MENU01","ENTR01","FOND01","BEBI03","POST01");
+INSERT INTO menu (codigo_menu,menu_entrada,menu_fondo,menu_bebida,menu_postre) values("MENU02","ENTR03","FOND02","BEBI02","POST02");
+INSERT INTO menu (codigo_menu,menu_entrada,menu_fondo,menu_bebida,menu_postre) values("MENU03","ENTR02","FOND03","BEBI02","POST01");
+INSERT INTO menu (codigo_menu,menu_entrada,menu_fondo,menu_bebida,menu_postre) values("MENU04","ENTR02","FOND04","BEBI01","POST03");
+INSERT INTO menu (codigo_menu,menu_entrada,menu_fondo,menu_bebida,menu_postre) values("MENU05","ENTR01","FOND05","BEBI03","POST03");
+INSERT INTO menu (codigo_menu,menu_entrada,menu_fondo,menu_bebida,menu_postre) values("MENU06","ENTR03","FOND06","BEBI01","POST01");
+/*Consultas SELECT*/
+SELECT*FROM entrada
+SELECT*FROM fondo
+SELECT*FROM bebida
+SELECT*FROM entrada
+SELECT*FROM menu
+SELECT*FROM boleta
+
+/*Insertar datos*/
+INSERT INTO boleta (codigo_boleta,dni_cliente,fecha_boleta,menu_consume) values(NULL,"75391351","2019-06-17 00:00:00","MENU03");
+SELECT*FROM boleta
+/*Modificar datos*/
+UPDATE boleta set menu_consume="MENU03", fecha_boleta="2019-06-20 00:00:00" WHERE dni_cliente="75391345"
+SELECT*FROM boleta
+/*Eliminar datos*/
+DELETE FROM boleta WHERE dni_cliente="75391345"
+/*Seleccionar datos*/
+SELECT*FROM boleta WHERE dni_cliente="75391345"
+/*Connsultas especializadas*/
+/*Suma boleta*/
+SELECT codigo_menu,bl.dni_cliente,e.contenido_entrada,e.precio_entrada,f.contenido_fondo,f.precio_fondo,
+b.contenido_bebida,b.precio_bebida,p.contenido_postre,p.precio_postre, SUM(e.precio_entrada+f.precio_fondo+b.precio_bebida+p.precio_postre) as TOTAL 
+FROM menu m, entrada e, bebida b, fondo f, postre p, boleta bl
+WHERE m.menu_entrada=e.codigo_entrada AND m.menu_fondo=f.codigo_fondo AND m.menu_bebida=b.codigo_bebida AND m.menu_postre=p.codigo_postre AND
+GROUP BY codigo_menu
+/*Suma boleta de un cliente*/
+SELECT codigo_menu,bl.dni_cliente,e.contenido_entrada,e.precio_entrada,f.contenido_fondo,f.precio_fondo,
+b.contenido_bebida,b.precio_bebida,p.contenido_postre,p.precio_postre, SUM(e.precio_entrada+f.precio_fondo+b.precio_bebida+p.precio_postre) as TOTAL 
+FROM menu m, entrada e, bebida b, fondo f, postre p, boleta bl
+WHERE m.menu_entrada=e.codigo_entrada AND m.menu_fondo=f.codigo_fondo AND m.menu_bebida=b.codigo_bebida AND m.menu_postre=p.codigo_postre AND
+bl.dni_cliente="75391345"
+GROUP BY codigo_menu
+
+SELECT m.codigo_menu,e.contenido_entrada,b.contenido_bebida,f.contenido_fondo,p.contenido_postre FROM menu m, fondo f, entrada e, bebida b, postre p
+WHERE m.menu_entrada=e.codigo_entrada and m.menu_bebida=B.codigo_bebida and m.menu_fondo=f.codigo_fondo and m.menu_postre=p.codigo_Postre  
+GROUP BY m.codigo_menu,e.contenido_entrada,b.contenido_bebida,f.contenido_fondo,p.contenido_postre 
+
+Select*from menu WHERE codigo_menu="MENU02"
+
+select m.codigo_menu,e.contenido_entrada,f.contenido_fondo,b.contenido_bebida,p.contenido_postre from menu m, fondo f, entrada e, bebida b, postre p
+WHERE m.menu_entrada=e.codigo_entrada and m.menu_bebida=B.codigo_bebida and m.menu_fondo=f.codigo_fondo and m.menu_postre=p.codigo_Postre 
+and m.codigo_menu="MENU03"   
+
+Select*from menu WHERE codigo_menu="MENU03"
+ENTRADA
+COMIDA
+BEBIDA
+POSTRE
+
+select m.codigo_menu,e.precio_entrada,f.precio_fondo,b.precio_bebida,p.precio_postre, 
+SUM(e.precio_entrada+f.precio_fondo+b.precio_bebida+p.precio_postre) AS COSTO from menu m, fondo f, entrada e, bebida b, postre p
+WHERE m.menu_entrada=e.codigo_entrada and m.menu_bebida=B.codigo_bebida and m.menu_fondo=f.codigo_fondo and m.menu_postre=p.codigo_Postre 
+and m.codigo_menu="MENU03"
